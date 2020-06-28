@@ -1,4 +1,4 @@
-package com.example.android_architecture
+package com.example.android_architecture.base
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
