@@ -1,13 +1,15 @@
-package com.example.android_architecture.login
+package com.example.android_architecture.login.Interactor
 
 import android.os.Handler
+import com.example.android_architecture.login.ContractLogin
 
 /**
  * Login business model similar to use case
  * @author irfan Ul haq
  */
 
-class LoginInteractor() : ContractLogin.Interactor {
+class LoginInteractor() :
+    ContractLogin.Interactor {
 
     // A database or repository pattern can be used in more ideal situation
     val userName = "irfan"

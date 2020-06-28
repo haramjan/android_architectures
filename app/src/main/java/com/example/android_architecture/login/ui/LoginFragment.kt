@@ -1,4 +1,4 @@
-package com.example.android_architecture.login
+package com.example.android_architecture.login.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.android_architecture.BaseFragment
 import com.example.android_architecture.R
+import com.example.android_architecture.login.ContractLogin
 import kotlinx.android.synthetic.main.fragment_login.*
 
 
-    class LoginFragment : BaseFragment(), ContractLogin.View {
+    class LoginFragment : BaseFragment(),
+        ContractLogin.View {
 
 
         private  var presenter: ContractLogin.Presenter? = null
@@ -56,7 +58,8 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
     companion object {
         @JvmStatic
-        fun newInstance() = LoginFragment()
+        fun newInstance() =
+            LoginFragment()
     }
 
     override fun onDestroy() {

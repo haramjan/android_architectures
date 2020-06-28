@@ -1,8 +1,12 @@
-package com.example.android_architecture.login
+package com.example.android_architecture.login.ui
+
+import com.example.android_architecture.login.ContractLogin
+import com.example.android_architecture.login.Interactor.LoginInteractor
 
 
 class LoginPresenter(private val interactor: ContractLogin.Interactor = LoginInteractor()) :
-    ContractLogin.Presenter, ContractLogin.CallBack {
+    ContractLogin.Presenter,
+    ContractLogin.CallBack {
 
    private var view: ContractLogin.View? = null
 

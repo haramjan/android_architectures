@@ -1,4 +1,4 @@
-package com.example.android_architecture.login
+package com.example.android_architecture.login.ui
 
 import android.os.Bundle
 import com.example.android_architecture.BaseActivity
@@ -17,7 +17,8 @@ class LoginActivity : BaseActivity() {
     fun init(){
         val fragment = LoginFragment.newInstance()
         this.addFragment(fragment,containerLogin.id)
-        val presenter = LoginPresenter()
+        val presenter =
+            LoginPresenter()
         presenter.setVieww(fragment)
     }
 
