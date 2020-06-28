@@ -2,23 +2,28 @@ package com.example.android_architecture.base
 
 import com.example.android_architecture.base.Observer
 
- class Observable<T> {
+/**
+ * @author Irfan ul haq
+ * @Note: Threading is avoided for the purpose of complications and understanding
+ */
+
+class Observable<T> {
     private val observers = ArrayList<Observer<T>>()
-     private val callBack = object : CallBack<T> {
+    private val callBack = object : CallBack {
 
-         override fun detach(observer: Observer<T>) {
-          observers.remove(observer)
-         }
-     }
-
-     fun subscribe(observer: Observer<T>): Subscription<T>{
-        observers.add(observer)
-        return Subscription<T>(observer,callBack)
+        override fun detach(observer: Observer<*>) {
+            observers.remove(observer)
+        }
     }
 
-    fun update(isSuccess:Boolean,stat:T?, e:Throwable?){
+    fun subscribe(observer: Observer<T>): Subscription {
+        observers.add(observer)
+        return Subscription(observer, callBack)
+    }
 
-        if(isSuccess)
+    fun update(isSuccess: Boolean, stat: T?, e: Throwable?) {
+
+        if (isSuccess)
             notifySuccess(stat!!)
         else
             notifyError(e!!)
@@ -39,27 +44,23 @@ import com.example.android_architecture.base.Observer
 }
 
 
-open abstract class Observer<T>{
-    abstract fun onSuccess(state:T)
-    abstract fun onError(e:Throwable)
+open abstract class Observer<T> {
+    abstract fun onSuccess(state: T)
+    abstract fun onError(e: Throwable)
+}
+
+interface CallBack {
+    fun detach(observer: Observer<*>)
 }
 
 
-
-interface CallBack<T>{
-    fun detach(observer: Observer<T>)
-}
-
-
-
-class Subscription<T>  constructor(observer: Observer<T>, callBack: CallBack<T>) {
-    private var observer: Observer<T> = observer
-    private var callBack: CallBack<T> = callBack
+class Subscription constructor(observer: Observer<*>, callBack: CallBack) {
+    private var observer: Observer<*> = observer
+    private var callBack: CallBack = callBack
 
     fun unSubscribe() {
         callBack.detach(observer)
     }
 
 }
-
 

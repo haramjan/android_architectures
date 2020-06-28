@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 class LoginFragment : BaseFragment(), ContractLogin.View {
 
     private var viewModel: ContractLogin.ViewModel? = null
-    private var subscription: Subscription<String>? = null
+    private var subscription: Subscription? = null
 
     //fragmentMethods
     companion object {

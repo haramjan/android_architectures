@@ -13,7 +13,7 @@ class LoginViewModel(private val interactor: ContractLogin.Interactor = LoginInt
     ContractLogin.ViewModel {
 
     private var loginObservable = Observable<String>()
-    private var subscription: Subscription<String>? = null
+    private var subscription: Subscription? = null
     override fun doLogin(userName: String, password: String) {
         if (userName.isEmpty() || password.isEmpty()) {
             loginObservable.update(false,null, IllegalArgumentException( "Ops, userName and password is required"))
